@@ -1,4 +1,10 @@
-const API_URL = 'http://localhost:4000/api/auth';
+const isLocalhost = window.location.hostname === 'localhost';
+const API_BASE = isLocalhost
+    ? 'http://localhost:4000'
+    : 'https://yimeng-chen-project3-backend.onrender.com';
+
+const API_URL = `${API_BASE}/api/games`;
+
 
 // Sign in
 export async function register(username, password, passwordConfirm) {
