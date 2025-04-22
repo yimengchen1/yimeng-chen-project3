@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 4000;
 
 const whitelist = [
   'http://localhost:3000',
-  'https://battleship-client-te9w.onrender.com'
+  'https://yimeng-chen-project3-frontend.onrender.com'
 ];
 
 app.use(
