@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 4000;
 
 const whitelist = [
@@ -31,8 +32,12 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }
+  cookie: {
+    secure: true,
+    sameSite: 'none'
+  }
 }));
+
 
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
