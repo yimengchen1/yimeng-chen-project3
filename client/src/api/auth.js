@@ -3,8 +3,7 @@ const API_BASE = isLocalhost
     ? 'http://localhost:4000'
     : 'https://yimeng-chen-project3-backend.onrender.com';
 
-const API_URL = `${API_BASE}/api/games`;
-
+const API_URL = `${API_BASE}/api/auth`;
 
 // Sign in
 export async function register(username, password, passwordConfirm) {
