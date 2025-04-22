@@ -8,7 +8,23 @@ const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors({ origin: 'https://battleship-client-te9w.onrender.com', credentials: true }));
+const whitelist = [
+  'http://localhost:3000',
+  'https://battleship-client-te9w.onrender.com'
+];
+
+app.use(
+    cors({
+      origin(origin, callback) {
+        if (!origin || whitelist.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
+      credentials: true
+    })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(session({
